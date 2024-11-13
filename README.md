@@ -1,7 +1,21 @@
-# M3U8 Video Processor
+# M3U8 to Image hosting
+
 修改自[M3U8-Uploader](https://github.com/239144498/M3U8-Uploader)
 
-一个用于处理和上传M3U8视频的Python工具。支持本地视频切片和远程M3U8下载上传。
+一个用于处理M3U8视频伪装成图片上传到图床的Python工具。支持本地视频切片和远程M3U8下载上传。
+
+自备可以跨域的视频床就能使用网页播放。
+
+内置的端口都不支持跨域！！！
+
+## Demo
+
+自行本地播放器播放，图床有防盗链，不能网页播放
+本地切片：https://tupian.us.kg/m3u8/6.m3u8
+
+远程切片：https://tupian.us.kg/m3u8/66.m3u8
+远程原视频：https://v.cdnlz17.com/20231115/48113_b6b7b01f/index.m3u8
+远程原视频就有一点点音频错位，这个是正常的
 
 ## 功能特点
 
