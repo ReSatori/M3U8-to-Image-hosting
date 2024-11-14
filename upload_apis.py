@@ -80,6 +80,29 @@ def upload3(filename, fdata):
             time.sleep(2)
     raise Exception(f"{filename} TS 上传失败")
 
+    # 假设 auth_token 是一个固定的字符串，比如 "your_auth_token"
+def upload4(filename, fdata, auth_token="token"):
+    url = "https://i.111666.best/image"
+    headers = {
+        'Auth-Token': auth_token,  # 使用默认的 Auth-Token
+    }
+    file = prefix + fdata  # 加上 PNG 文件头
+    data = {"image": (f"{int(time.time())}.png", file, "image/png")}
+    
+    for i in range(3):
+        try:
+            with requests.post(url=url, headers=headers, files=data, verify=False) as resp:
+                if resp.status_code == 200:
+                    data = resp.json()
+                    return f"https://i.111666.best/image/{data['src']}"
+                else:
+                    logger.warning(f"上传请求失败，状态码: {resp.status_code}")
+        except Exception as e:
+            logger.warning(f"上传请求出错 {e}")
+            time.sleep(2)
+
+    raise Exception(f"{filename} 上传失败")
+
 
 # 导出所有上传接口
-UPLOAD_APIS = [upload1, upload2, upload3]
+UPLOAD_APIS = [upload1, upload2, upload3, upload4]
